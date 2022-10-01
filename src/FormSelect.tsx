@@ -9,14 +9,18 @@ type option = {
 type props = {
   className?: string;
   options: option[];
-  onInput: () => void;
+  onInput: (type: string) => void;
 };
 
 function FormSelect(props: props) {
+  function onInput(event: React.FormEvent<HTMLSelectElement>) {
+    props.onInput(event.currentTarget.value);
+  }
+
   return (
     <select
       className={classnames("border ml-4 p-2 rounded-lg", props.className)}
-      onInput={props.onInput}
+      onInput={onInput}
     >
       {props.options.map((option, i) => (
         <option key={i} value={option.value}>
