@@ -4,6 +4,7 @@ import { card } from "./AppCard";
 
 type props = {
   cards: card[];
+  onSearch: (query: string) => void;
   onSort: (type: string) => void;
 };
 
@@ -12,6 +13,7 @@ function AppMain(props: props) {
     <main className="AppMain">
       <AppMainHeader
         onSort={props.onSort}
+        onSearch={props.onSearch}
       />
       <AppMainBody cards={props.cards} />
     </main>

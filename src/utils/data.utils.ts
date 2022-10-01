@@ -37,9 +37,15 @@ export function sortByUpdated(cards: card[]) {
   return [...cards].sort((b, a) => (b.updatedAt > a.updatedAt ? 1 : -1));
 }
 
+export function filterBySearchQuery(cards: card[], searchQuery: string) {
+  searchQuery = searchQuery.toLowerCase();
+  return cards.filter((card) => card.name.toLowerCase().includes(searchQuery));
+}
+
 export default {
   getLanguageFilters,
   getStatusFilters,
   sortByName,
   sortByUpdated,
+  filterBySearchQuery,
 };

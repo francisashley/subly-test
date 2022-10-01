@@ -1,10 +1,13 @@
+import { useState } from "react";
 import AppFilters from "./AppFilters";
 import AppMain from "./AppMain";
 import { card } from "./AppCard";
+import {
   getStatusFilters,
   getLanguageFilters,
   sortByName,
   sortByUpdated,
+  filterBySearchQuery,
 } from "./utils/data.utils";
 import data from "./data.json";
 
@@ -15,6 +18,13 @@ function App() {
   const statuses = getStatusFilters(cards);
   const languages = getLanguageFilters(cards);
 
+  const onSearch = (searchQuery: string) => {
+    if (searchQuery) {
+      setCards(filterBySearchQuery(allCards, searchQuery));
+    } else {
+      setCards(allCards);
+    }
+  };
 
   const onSort = (type: string) => {
     if (type === "name") {
@@ -29,6 +39,7 @@ function App() {
       <AppFilters statuses={statuses} languages={languages} />
       <AppMain
         cards={cards}
+        onSearch={onSearch}
         onSort={onSort}
       />
     </div>

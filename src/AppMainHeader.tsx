@@ -1,6 +1,8 @@
+import AppSearch from "./AppSearch";
 import FormSelect from "./FormSelect";
 
 type props = {
+  onSearch: (query: string) => void;
   onSort: (type: string) => void;
 };
 
@@ -18,8 +20,7 @@ function AppMainHeader(props: props) {
           ]}
         />
       </div>
-      <div>Search</div>
-      <input type="search" name="" id="" />
+      <AppSearch onSearch={props.onSearch} />
     </header>
   );
 }
