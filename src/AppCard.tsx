@@ -33,7 +33,7 @@ function AppMainCard(props: props) {
   }
 
   return (
-    <div className="AppMainCard">
+    <div className="AppMainCard w-80 h-80">
       <div
         className={classnames("cover", {
           "cover--error": props.card.status === "error",
