@@ -13,6 +13,7 @@ export type card = {
 };
 
 type props = {
+  className?: string;
   card: card;
 };
 
@@ -32,16 +33,27 @@ function AppMainCard(props: props) {
   }
 
   return (
-    <div className="AppMainCard w-80 h-80">
+    <div
+      className={classnames(
+        "AppMainCard w-full overflow-hidden flex flex-col rounded shadow",
+        props.className
+      )}
+    >
       <div
-        className={classnames("cover", {
-          "cover--error": props.card.status === "error",
-        })}
+        className={classnames(
+          "cover overflow-hidden flex-1 aspect-video relative bg-gray-200",
+          {
+            "cover--error": props.card.status === "error",
+          }
+        )}
       >
         {props.card.status !== "error" && (
-          <img className="image" src={props.card.cover} />
+          <img
+            className="image absolute w-full h-full object-cover"
+            src={props.card.cover}
+          />
         )}
-        <div className="overlays">
+        {/* <div className="overlays">
           {props.card.status === "ready" && (
             <div>
               <button>Edit</button>
@@ -69,11 +81,13 @@ function AppMainCard(props: props) {
               </div>
             </div>
           )}
-        </div>
+        </div> */}
       </div>
-      <div className="content">
-        <h4 className="title">{props.card.name}</h4>
-        <div className="status">{getStatusText(props.card)}</div>
+      <div className="content flex-1 p-3">
+        <h4 className="text-sm font-bold">{props.card.name}</h4>
+        <div className="text-xs text-gray-600 font-medium">
+          {getStatusText(props.card)}
+        </div>
       </div>
     </div>
   );
