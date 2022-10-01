@@ -7,12 +7,12 @@ type props = {
 function AppMainBody(props: props) {
   return (
     <div className="AppMainBody">
-      <ul>
-        <li>
-          {props.cards.map((card) => (
-            <AppCard key={card.id} card={card} />
-          ))}
-        </li>
+      <ul className="flex flex-wrap -m-4">
+        {props.cards.map((card) => (
+          <li className="w-full sm:w-1/2 lg:w-1/3 p-4" key={card.id}>
+            <AppCard card={card} />
+          </li>
+        ))}
       </ul>
     </div>
   );

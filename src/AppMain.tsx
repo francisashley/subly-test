@@ -1,8 +1,10 @@
 import AppMainHeader from "./AppMainHeader";
 import AppMainBody from "./AppMainBody";
 import { card } from "./AppCard";
+import classnames from "classnames";
 
 type props = {
+  className?: string;
   cards: card[];
   onSearch: (query: string) => void;
   onSort: (type: string) => void;
@@ -10,8 +12,9 @@ type props = {
 
 function AppMain(props: props) {
   return (
-    <main className="AppMain">
+    <main className={classnames("AppMain", props.className)}>
       <AppMainHeader
+        className="border-b mb-8 flex justify-between pb-4 items-center"
         onSort={props.onSort}
         onSearch={props.onSearch}
       />
