@@ -1,4 +1,3 @@
-import React from "react";
 import AppCard, { card } from "./AppCard";
 
 type props = {

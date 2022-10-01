@@ -1,4 +1,3 @@
-import React from "react";
 import AppFilters from "./AppFilters";
 import AppMain from "./AppMain";
 import { card } from "./AppCard";

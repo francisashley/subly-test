@@ -1,4 +1,3 @@
-import React from "react";
 import AppMainHeader from "./AppMainHeader";
 import AppMainBody from "./AppMainBody";
 import { card } from "./AppCard";
