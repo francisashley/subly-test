@@ -38,7 +38,7 @@ function App() {
     <div className="App">
       <AppFilters statuses={statuses} languages={languages} />
       <AppMain
-        className="w-full p-4 lg:w-4/5 lg:p-12"
+        className="w-full lg:w-4/5"
         cards={cards}
         onSearch={onSearch}
         onSort={onSort}

@@ -14,7 +14,7 @@ function AppMain(props: props) {
   return (
     <main className={classnames("AppMain", props.className)}>
       <AppMainHeader
-        className="border-b mb-8 flex justify-between pb-4 items-center"
+        className="border-b flex justify-between py-4 px-8 items-center"
         onSort={props.onSort}
         onSearch={props.onSearch}
       />
