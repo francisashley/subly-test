@@ -59,7 +59,7 @@
 ## Roadmap
 
 - [x] Init
-- [ ] Install / setup tech stack
+- [x] Install / setup tech stack
 - [ ] Create skeleton (no styling) // TDD ??
 - [ ] Style everything
 - [ ] Deploy
