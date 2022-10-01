@@ -1,0 +1,31 @@
+{
+  "eslint.validate": [
+    "vue",
+    "javascript",
+    "react",
+    "typescriptreact",
+  ],
+  "stylelint.validate": [
+    "css",
+    "scss",
+    "postcss",
+  ],
+  "[css]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": true
+    }
+  },
+  "[scss]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": true
+    }
+  },
+  "[postcss]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": true
+    }
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}

@@ -52,6 +52,9 @@
   - React testing Library
 - Deploy
   - Github Pages
+- Dev QA
+  - Prettier
+  - Eslint
 
 ## Roadmap
 
