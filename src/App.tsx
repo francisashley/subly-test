@@ -15,8 +15,8 @@ function App() {
   const allCards = data.media as card[];
   const [cards, setCards] = useState(sortByName(allCards));
 
-  const statuses = getStatusFilters(cards);
-  const languages = getLanguageFilters(cards);
+  const statuses = getStatusFilters(allCards);
+  const languages = getLanguageFilters(allCards);
 
   const onSearch = (searchQuery: string) => {
     if (searchQuery) {
@@ -25,6 +25,8 @@ function App() {
       setCards(allCards);
     }
   };
+
+  const onFilter = () => alert("filtering");
 
   const onSort = (type: string) => {
     if (type === "name") {
@@ -35,8 +37,13 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <AppFilters statuses={statuses} languages={languages} />
+    <div className="flex">
+      <AppFilters
+        className="hidden lg:block w-1/5 py-6 px-12 border-r"
+        statuses={statuses}
+        languages={languages}
+        onFilter={onFilter}
+      />
       <AppMain
         className="w-full lg:w-4/5"
         cards={cards}
