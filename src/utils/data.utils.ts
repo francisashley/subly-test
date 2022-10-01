@@ -29,7 +29,17 @@ export function getStatusFilters(cards: card[]): filter[] {
   }));
 }
 
+export function sortByName(cards: card[]) {
+  return [...cards].sort((a, b) => (b.name > a.name ? -1 : 1));
+}
+
+export function sortByUpdated(cards: card[]) {
+  return [...cards].sort((b, a) => (b.updatedAt > a.updatedAt ? 1 : -1));
+}
+
 export default {
   getLanguageFilters,
   getStatusFilters,
+  sortByName,
+  sortByUpdated,
 };
