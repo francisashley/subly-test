@@ -1,24 +1,19 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import AppFilters from "./AppFilters";
+import AppMain from "./AppMain";
+import { card } from "./AppCard";
+import { getStatusFilters, getLanguageFilters } from "./utils/data.utils";
+import data from "./data.json";
 
 function App() {
+  const cards = data.media as card[];
+  const statuses = getStatusFilters(cards);
+  const languages = getLanguageFilters(cards);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AppFilters statuses={statuses} languages={languages} />
+      <AppMain cards={cards} />
     </div>
   );
 }
