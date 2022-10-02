@@ -3,6 +3,7 @@ import AppHeading from "./AppHeading";
 export type filter = {
   id: string;
   label: string;
+  amount: number;
 };
 
 type props = {
@@ -33,7 +34,9 @@ function AppFilters(props: props) {
               id={status.id}
               onClick={(event) => onFilter("status", status.id, event)}
             />{" "}
-            <label htmlFor={status.id}>{status.label}</label>
+            <label htmlFor={status.id}>
+              {status.label} ({status.amount})
+            </label>
           </li>
         ))}
       </ul>
@@ -46,7 +49,9 @@ function AppFilters(props: props) {
               id={language.id}
               onClick={(event) => onFilter("language", language.id, event)}
             />{" "}
-            <label htmlFor={language.id}>{language.label}</label>
+            <label htmlFor={language.id}>
+              {language.label} ({language.amount})
+            </label>
           </li>
         ))}
       </ul>

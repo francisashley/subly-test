@@ -11,12 +11,16 @@ import {
 export function useCards(defaultCards: card[]) {
   const [initialCards] = useState(sortByName(defaultCards));
   const [searchedCards, setSearchedCards] = useState(defaultCards);
-  const [cards, setCards] = useState(sortByName(searchedCards));
+  const [filteredCards, setFilteredCards] = useState(sortByName(searchedCards));
   const [filters, setFilters] = useState(new Map());
   const [sort, setSort] = useState("");
+  const [statuses, setStatuses] = useState(getStatusFilters(initialCards));
+  const [languages, setLanguages] = useState(getLanguageFilters(initialCards));
 
-  const statuses = getStatusFilters(initialCards);
-  const languages = getLanguageFilters(initialCards);
+  useEffect(() => {
+    setStatuses(getStatusFilters(searchedCards));
+    setLanguages(getLanguageFilters(searchedCards));
+  }, [searchedCards]);
 
   function search(searchQuery: string) {
     const _searchedCards = searchQuery
@@ -39,34 +43,36 @@ export function useCards(defaultCards: card[]) {
   };
 
   useEffect(() => {
-    let _cards: card[] = searchedCards;
+    let _filteredCards: card[] = searchedCards;
     // Filter status
     if (filters.get("status")?.length) {
       const statuses = new Set(filters.get("status"));
-      _cards = _cards.filter((_card) => statuses.has(_card.status));
+      _filteredCards = _filteredCards.filter((_card) =>
+        statuses.has(_card.status)
+      );
     }
 
     // Filter language
     if (filters.get("language")?.length) {
       const languages = new Set(filters.get("language"));
-      _cards = _cards.filter((_card) => {
+      _filteredCards = _filteredCards.filter((_card) => {
         return _card.languages.some((language) => languages.has(language));
       });
     }
 
     // handle sort
     if (sort === "name") {
-      _cards = sortByName(cards);
+      _filteredCards = sortByName(_filteredCards);
     } else if (sort === "updated") {
-      _cards = sortByUpdated(cards);
+      _filteredCards = sortByUpdated(_filteredCards);
     }
 
-    setCards(_cards);
+    setFilteredCards(_filteredCards);
   }, [searchedCards, filters, sort]);
 
   return {
-    cards,
-    setCards,
+    filteredCards,
+    setFilteredCards,
     statuses,
     languages,
     search,

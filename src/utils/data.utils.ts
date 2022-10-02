@@ -8,24 +8,34 @@ const langNames = {
 } as { [key: string]: string };
 
 export function getLanguageFilters(cards: card[]): filter[] {
-  const langs = new Set(cards.map((card) => card.languages).flat());
-  return Array.from(langs).map((lang) => ({
-    id: lang,
-    label: langNames[lang],
+  const languages: { [key: string]: number } = {};
+  cards.forEach((card) => {
+    card.languages.forEach((language) => {
+      languages[language] = (languages[language] || 0) + 1;
+    });
+  });
+  return Object.keys(languages).map((language) => ({
+    id: language,
+    label: langNames[language],
+    amount: languages[language],
   }));
 }
 
 const statusNames = {
-  ready: "Complete",
-  transcribing: "Processing",
+  ready: "Ready",
+  transcribing: "Transcribing",
   error: "Error",
 } as { [key: string]: string };
 
 export function getStatusFilters(cards: card[]): filter[] {
-  const statuses = new Set(cards.map((card) => card.status));
-  return Array.from(statuses).map((status) => ({
+  const statuses: { [key: string]: number } = {};
+  cards.forEach((card) => {
+    statuses[card.status] = (statuses[card.status] || 0) + 1;
+  });
+  return Object.keys(statuses).map((status) => ({
     id: status,
     label: statusNames[status],
+    amount: statuses[status],
   }));
 }
 

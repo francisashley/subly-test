@@ -6,9 +6,8 @@ import data from "./data.json";
 import { useCards } from "./hooks/useCards";
 
 function App() {
-  const { cards, statuses, languages, search, setFilter, setSort } = useCards(
-    data.media as card[]
-  );
+  const { filteredCards, statuses, languages, search, setFilter, setSort } =
+    useCards(data.media as card[]);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -18,11 +17,11 @@ function App() {
       />
       <AppSearchResultsBar
         className="border-b flex py-2 px-8 items-center"
-        totalResults={cards.length}
+        totalResults={filteredCards.length}
         onSort={setSort}
       />
       <AppMain
-        cards={cards}
+        cards={filteredCards}
         onFilter={setFilter}
         statuses={statuses}
         languages={languages}
