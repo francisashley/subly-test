@@ -21,6 +21,7 @@ function App() {
         onSort={setSort}
       />
       <AppMain
+        className="w-full max-w-360 mx-auto"
         cards={filteredCards}
         onFilter={setFilter}
         statuses={statuses}

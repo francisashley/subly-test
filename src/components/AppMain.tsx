@@ -14,10 +14,7 @@ type props = {
 };
 
 function AppMain(props: props) {
-  const className = classnames(
-    "flex w-full max-w-360 mx-auto",
-    props.className
-  );
+  const className = classnames("flex", props.className);
 
   return (
     <main className={className}>
