@@ -11,7 +11,7 @@ import {
 
 export function useCards(defaultCards: card[]) {
   // Store all of the cards
-  const [allCards, setInitialCards] = useState(sortByName(defaultCards));
+  const [allCards, setAllCards] = useState(sortByName(defaultCards));
   // Store cards that have been filtered by the search query
   const [searchedCards, setSearchedCards] = useState(defaultCards);
   // Store cards that have been filtered search query and tags
@@ -89,10 +89,11 @@ export function useCards(defaultCards: card[]) {
 
   // Delete a card
   function deleteCard(id: number) {
-    setInitialCards(allCards.filter((card) => card.id !== id));
+    setAllCards(allCards.filter((card) => card.id !== id));
   }
 
   return {
+    setAllCards,
     filteredCards,
     setFilteredCards,
     statuses,

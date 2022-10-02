@@ -1,4 +1,5 @@
-import data from "../data/data.json";
+import { useEffect } from "react";
+
 import { useCards } from "../hooks/useCards";
 import { card } from "./AppCard";
 import AppHeader from "./AppHeader";
@@ -7,6 +8,7 @@ import AppSearchResultsBar from "./AppSearchResultsBar";
 
 function App() {
   const {
+    setAllCards,
     filteredCards,
     statuses,
     languages,
@@ -14,7 +16,16 @@ function App() {
     setFilter,
     setSort,
     deleteCard,
-  } = useCards(data.media as card[]);
+  } = useCards([]);
+
+  useEffect(() => {
+    fetch("https://run.mocky.io/v3/a811c0e9-adae-4554-9694-173aa23bc38b")
+      .then((response) => response.json())
+      .then((response) => {
+        setAllCards(response.media as card[]);
+      })
+      .catch(console.error);
+  }, []);
 
   function onClickReportCard() {
     alert("This feature is not supported right now.");
