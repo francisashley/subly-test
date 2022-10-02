@@ -1,8 +1,9 @@
-import AppMainBody from "./AppMainBody";
-import AppFilters from "./AppFilters";
-import { card } from "./AppCard";
 import classnames from "classnames";
+
+import { card } from "./AppCard";
+import AppFilters from "./AppFilters";
 import { filter } from "./AppFilters";
+import AppMainBody from "./AppMainBody";
 
 type props = {
   className?: string;

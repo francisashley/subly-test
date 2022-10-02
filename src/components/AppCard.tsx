@@ -1,4 +1,5 @@
 import classnames from "classnames";
+
 import { getTimeAgo } from "../utils/general.utils";
 
 export type card = {
