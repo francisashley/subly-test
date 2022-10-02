@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.97722cb2.css",
-    "main.js": "/static/js/main.d27ca2ed.js",
-    "static/js/787.4494fbf0.chunk.js": "/static/js/787.4494fbf0.chunk.js",
-    "index.html": "/index.html",
-    "main.97722cb2.css.map": "/static/css/main.97722cb2.css.map",
-    "main.d27ca2ed.js.map": "/static/js/main.d27ca2ed.js.map",
-    "787.4494fbf0.chunk.js.map": "/static/js/787.4494fbf0.chunk.js.map"
+    "main.css": "/subly-test/static/css/main.97722cb2.css",
+    "main.js": "/subly-test/static/js/main.dcacaf97.js",
+    "static/js/787.4494fbf0.chunk.js": "/subly-test/static/js/787.4494fbf0.chunk.js",
+    "index.html": "/subly-test/index.html",
+    "main.97722cb2.css.map": "/subly-test/static/css/main.97722cb2.css.map",
+    "main.dcacaf97.js.map": "/subly-test/static/js/main.dcacaf97.js.map",
+    "787.4494fbf0.chunk.js.map": "/subly-test/static/js/787.4494fbf0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.97722cb2.css",
-    "static/js/main.d27ca2ed.js"
+    "static/js/main.dcacaf97.js"
   ]
 }
