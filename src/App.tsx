@@ -1,54 +1,30 @@
-import { useState } from "react";
-import AppFilters from "./AppFilters";
+import AppMainHeader from "./AppMainHeader";
+import AppSearchResultsBar from "./AppSearchResultsBar";
 import AppMain from "./AppMain";
 import { card } from "./AppCard";
-import {
-  getStatusFilters,
-  getLanguageFilters,
-  sortByName,
-  sortByUpdated,
-  filterBySearchQuery,
-} from "./utils/data.utils";
 import data from "./data.json";
+import { useCards } from "./hooks/useCards";
 
 function App() {
-  const allCards = data.media as card[];
-  const [cards, setCards] = useState(sortByName(allCards));
-
-  const statuses = getStatusFilters(allCards);
-  const languages = getLanguageFilters(allCards);
-
-  const onSearch = (searchQuery: string) => {
-    if (searchQuery) {
-      setCards(filterBySearchQuery(allCards, searchQuery));
-    } else {
-      setCards(allCards);
-    }
-  };
-
-  const onFilter = () => alert("filtering");
-
-  const onSort = (type: string) => {
-    if (type === "name") {
-      setCards(sortByName(cards));
-    } else if (type === "updated") {
-      setCards(sortByUpdated(cards));
-    }
-  };
+  const { cards, statuses, languages, setSearchQuery, setFilter, setSort } =
+    useCards(data.media as card[]);
 
   return (
-    <div className="flex">
-      <AppFilters
-        className="hidden lg:block w-1/5 py-6 px-12 border-r"
-        statuses={statuses}
-        languages={languages}
-        onFilter={onFilter}
+    <div className="flex flex-col min-h-screen">
+      <AppMainHeader
+        className="border-b flex py-4 px-8 items-center"
+        onSearch={setSearchQuery}
+      />
+      <AppSearchResultsBar
+        className="border-b flex py-2 px-8 items-center"
+        totalResults={cards.length}
+        onSort={setSort}
       />
       <AppMain
-        className="w-full lg:w-4/5"
         cards={cards}
-        onSearch={onSearch}
-        onSort={onSort}
+        onFilter={setFilter}
+        statuses={statuses}
+        languages={languages}
       />
     </div>
   );
