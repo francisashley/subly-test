@@ -10,12 +10,12 @@ type props = {
   className?: string;
   id: string;
   options: option[];
-  onInput: (type: string) => void;
+  onInput?: (type: string) => void;
 };
 
 function FormSelect(props: props) {
   function onInput(event: React.FormEvent<HTMLSelectElement>) {
-    props.onInput(event.currentTarget.value);
+    props.onInput?.(event.currentTarget.value);
   }
 
   const className = classnames("border ml-4 p-2 rounded-lg", props.className);
