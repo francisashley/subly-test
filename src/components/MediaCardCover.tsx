@@ -1,9 +1,9 @@
 import classnames from "classnames";
 
-import { card } from "./AppCard";
-import AppCardCoverErrorOverlay from "./AppCardCoverErrorOverlay";
-import AppCardCoverReadyOverlay from "./AppCardCoverReadyOverlay";
-import AppCardCoverTranscribingOverlay from "./AppCardCoverTranscribingOverlay";
+import { card } from "./MediaCard";
+import MediaCardCoverErrorOverlay from "./MediaCardCoverErrorOverlay";
+import MediaCardCoverReadyOverlay from "./MediaCardCoverReadyOverlay";
+import MediaCardCoverTranscribingOverlay from "./MediaCardCoverTranscribingOverlay";
 
 type props = {
   className?: string;
@@ -13,7 +13,7 @@ type props = {
   onClickReport?: (id: number) => void;
 };
 
-function AppCardCover(props: props) {
+function MediaCardCover(props: props) {
   const className = classnames(
     "cover overflow-hidden flex-1 aspect-video relative bg-gray-200",
     { "bg-red-100": props.card.status === "error" }
@@ -32,7 +32,7 @@ function AppCardCover(props: props) {
         />
       )}
       {props.card.status === "ready" && (
-        <AppCardCoverReadyOverlay
+        <MediaCardCoverReadyOverlay
           className="absolute w-full h-full"
           card={props.card}
           onClickEdit={props.onClickEdit}
@@ -40,13 +40,13 @@ function AppCardCover(props: props) {
         />
       )}
       {props.card.status === "transcribing" && (
-        <AppCardCoverTranscribingOverlay
+        <MediaCardCoverTranscribingOverlay
           className="absolute w-full h-full"
           card={props.card}
         />
       )}
       {props.card.status === "error" && (
-        <AppCardCoverErrorOverlay
+        <MediaCardCoverErrorOverlay
           className="absolute w-full h-full"
           card={props.card}
           onClickReport={props.onClickReport}
@@ -57,4 +57,4 @@ function AppCardCover(props: props) {
   );
 }
 
-export default AppCardCover;
+export default MediaCardCover;

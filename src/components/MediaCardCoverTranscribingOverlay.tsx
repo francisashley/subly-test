@@ -1,14 +1,14 @@
 import classnames from "classnames";
 
 import AnimatedStripes from "./AnimatedStripes";
-import { card } from "./AppCard";
+import { card } from "./MediaCard";
 
 type props = {
   className?: string;
   card: card;
 };
 
-function AppCardCoverTranscribingOverlay(props: props) {
+function MediaCardCoverTranscribingOverlay(props: props) {
   const className = classnames(
     "bg-white/[.8] flex flex-col justify-center items-center",
     props.className
@@ -22,4 +22,4 @@ function AppCardCoverTranscribingOverlay(props: props) {
   );
 }
 
-export default AppCardCoverTranscribingOverlay;
+export default MediaCardCoverTranscribingOverlay;

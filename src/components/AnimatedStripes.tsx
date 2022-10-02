@@ -6,7 +6,7 @@ type props = {
   className?: string;
 };
 
-function AppCardCoverTranscribingOverlay(props: props) {
+function AnimatedStripes(props: props) {
   const className = classnames(
     "bg-purple-400 relative overflow-hidden",
     props.className
@@ -19,4 +19,4 @@ function AppCardCoverTranscribingOverlay(props: props) {
   );
 }
 
-export default AppCardCoverTranscribingOverlay;
+export default AnimatedStripes;

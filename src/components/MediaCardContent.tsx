@@ -1,14 +1,14 @@
 import classnames from "classnames";
 
 import { getTimeAgo } from "../utils/general.utils";
-import { card } from "./AppCard";
+import { card } from "./MediaCard";
 
 type props = {
   className?: string;
   card: card;
 };
 
-function AppCardContent(props: props) {
+function MediaCardContent(props: props) {
   function getStatusText(card: card) {
     if (card.status === "transcribing") {
       return "Transcribing";
@@ -31,4 +31,4 @@ function AppCardContent(props: props) {
   );
 }
 
-export default AppCardContent;
+export default MediaCardContent;

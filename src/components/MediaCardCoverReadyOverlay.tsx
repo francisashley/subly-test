@@ -1,7 +1,7 @@
 import classnames from "classnames";
 import { FiTrash2 } from "react-icons/fi";
 
-import { card } from "./AppCard";
+import { card } from "./MediaCard";
 
 type props = {
   className?: string;
@@ -10,7 +10,7 @@ type props = {
   onClickDelete?: (id: number) => void;
 };
 
-function AppCardCoverReadyOverlay(props: props) {
+function MediaCardCoverReadyOverlay(props: props) {
   const className = classnames(
     "opacity-0 group-hover:opacity-100 bg-black/[0.6] duration-1000 ease-out-expo flex justify-center items-center",
     props.className
@@ -33,4 +33,4 @@ function AppCardCoverReadyOverlay(props: props) {
   );
 }
 
-export default AppCardCoverReadyOverlay;
+export default MediaCardCoverReadyOverlay;

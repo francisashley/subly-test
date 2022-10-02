@@ -1,9 +1,9 @@
 import classnames from "classnames";
 
-import { card } from "./AppCard";
 import AppFilters from "./AppFilters";
 import { filter } from "./AppFilters";
 import AppMainBody from "./AppMainBody";
+import { card } from "./MediaCard";
 
 type props = {
   className?: string;

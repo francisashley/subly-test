@@ -1,5 +1,5 @@
-import { card } from "../components/AppCard";
 import { filter } from "../components/AppFilters";
+import { card } from "../components/MediaCard";
 
 const langNames = {
   en: "English",

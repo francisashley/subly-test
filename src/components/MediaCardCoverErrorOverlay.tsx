@@ -1,7 +1,7 @@
 import classnames from "classnames";
 import { FiAlertCircle } from "react-icons/fi";
 
-import { card } from "./AppCard";
+import { card } from "./MediaCard";
 
 type props = {
   className?: string;
@@ -10,7 +10,7 @@ type props = {
   onClickReport?: (id: number) => void;
 };
 
-function AppCardCoverErrorOverlay(props: props) {
+function MediaCardCoverErrorOverlay(props: props) {
   const className = classnames("flex py-8 px-4 items-center", props.className);
   return (
     <div className={className}>
@@ -41,4 +41,4 @@ function AppCardCoverErrorOverlay(props: props) {
   );
 }
 
-export default AppCardCoverErrorOverlay;
+export default MediaCardCoverErrorOverlay;

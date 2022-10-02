@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { card } from "../components/AppCard";
+import { card } from "../components/MediaCard";
 import {
   filterBySearchQuery,
   getLanguageFilters,

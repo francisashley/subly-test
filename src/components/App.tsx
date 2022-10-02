@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 
 import { useCards } from "../hooks/useCards";
-import { card } from "./AppCard";
 import AppHeader from "./AppHeader";
 import AppMain from "./AppMain";
 import AppSearchResultsBar from "./AppSearchResultsBar";
+import { card } from "./MediaCard";
 
 function App() {
   const {

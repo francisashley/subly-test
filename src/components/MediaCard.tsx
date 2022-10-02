@@ -1,7 +1,7 @@
 import classnames from "classnames";
 
-import AppCardContent from "./AppCardContent";
-import AppCardCover from "./AppCardCover";
+import MediaCardContent from "./MediaCardContent";
+import MediaCardCover from "./MediaCardCover";
 
 export type card = {
   id: number;
@@ -22,7 +22,7 @@ type props = {
   onClickReport?: (id: number) => void;
 };
 
-function AppCard(props: props) {
+function MediaCard(props: props) {
   const className = classnames(
     "w-full overflow-hidden flex flex-col rounded shadow group cursor-default hover:shadow-lg duration-1000 ease-out-expo",
     props.className
@@ -30,15 +30,15 @@ function AppCard(props: props) {
 
   return (
     <div className={className}>
-      <AppCardCover
+      <MediaCardCover
         card={props.card}
         onClickReport={props.onClickReport}
         onClickDelete={props.onClickDelete}
         onClickEdit={props.onClickEdit}
       />
-      <AppCardContent card={props.card} />
+      <MediaCardContent card={props.card} />
     </div>
   );
 }
 
-export default AppCard;
+export default MediaCard;

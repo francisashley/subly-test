@@ -1,4 +1,4 @@
-import { card } from "../components/AppCard";
+import { card } from "../components/MediaCard";
 import cardsFixture from "../fixtures/cards.json";
 
 const cards = cardsFixture.media as card[];

@@ -1,7 +1,7 @@
 import classnames from "classnames";
 
-import AppCard, { card } from "./AppCard";
 import AppHeading from "./AppHeading";
+import MediaCard, { card } from "./MediaCard";
 
 type props = {
   className?: string;
@@ -20,7 +20,7 @@ function AppMainBody(props: props) {
       <ul className="flex flex-wrap -m-4">
         {props.cards.map((card) => (
           <li className="w-full sm:w-1/2 md:w-1/3 xl:w-1/4 p-4" key={card.id}>
-            <AppCard
+            <MediaCard
               card={card}
               onClickReport={props.onClickReportCard}
               onClickDelete={props.onClickDeleteCard}
