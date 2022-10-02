@@ -1,7 +1,6 @@
 import classnames from "classnames";
-import AppHeading from "./AppHeading";
-
 import FormSelect from "./FormSelect";
+
 type props = {
   className?: string;
   totalResults: number;
@@ -9,24 +8,29 @@ type props = {
 };
 
 function AppSearchResultsBar(props: props) {
+  const className = classnames(
+    "hidden sm:flex items-center justify-between",
+    props.className
+  );
+
+  const sortOptions = [
+    { value: "name", name: "Name" },
+    { value: "updated", name: "Updated" },
+  ];
+
   return (
-    <div
-      className={classnames(
-        "hidden sm:flex items-center justify-between",
-        props.className
-      )}
-    >
+    <div className={className}>
       <div>
         1-{props.totalResults} of {props.totalResults}
       </div>
       <div className="flex items-center">
-        <AppHeading level={3} text="Sort by" />
+        <label className="text-md font-medium" htmlFor="sort-cards">
+          Sort by
+        </label>
         <FormSelect
+          id="sort-cards"
           onInput={props.onSort}
-          options={[
-            { value: "name", name: "Name" },
-            { value: "updated", name: "Updated" },
-          ]}
+          options={sortOptions}
         />
       </div>
     </div>

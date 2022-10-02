@@ -1,4 +1,3 @@
-import classnames from "classnames";
 import AppHeading from "./AppHeading";
 
 export type filter = {
@@ -15,7 +14,7 @@ type props = {
 
 function AppFilters(props: props) {
   return (
-    <aside className={classnames("AppFilters", props.className)}>
+    <aside className={props.className}>
       <AppHeading level={2} text="Filters" className="mb-4" />
       <AppHeading level={3} text="Status" className="mb-1" />
       <ul className="mb-4">

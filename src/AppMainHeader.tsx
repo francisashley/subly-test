@@ -7,8 +7,10 @@ type props = {
 };
 
 function AppMainHeader(props: props) {
+  const className = classnames("flex justify-center", props.className);
+
   return (
-    <header className={classnames("flex justify-center", props.className)}>
+    <header className={className}>
       <AppSearch onSearch={props.onSearch} />
     </header>
   );

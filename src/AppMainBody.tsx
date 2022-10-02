@@ -8,8 +8,10 @@ type props = {
 };
 
 function AppMainBody(props: props) {
+  const className = classnames("py-6 px-8", props.className);
+
   return (
-    <div className={classnames("AppMainBody py-6 px-8", props.className)}>
+    <div className={className}>
       <AppHeading level={2} text="Media" className="mb-4" />
       <ul className="flex flex-wrap -m-4">
         {props.cards.map((card) => (

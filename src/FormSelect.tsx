@@ -7,6 +7,7 @@ type option = {
 };
 
 type props = {
+  id?: string;
   className?: string;
   options: option[];
   onInput: (type: string) => void;
@@ -17,11 +18,10 @@ function FormSelect(props: props) {
     props.onInput(event.currentTarget.value);
   }
 
+  const className = classnames("border ml-4 p-2 rounded-lg", props.className);
+
   return (
-    <select
-      className={classnames("border ml-4 p-2 rounded-lg", props.className)}
-      onInput={onInput}
-    >
+    <select id={props.id} className={className} onInput={onInput}>
       {props.options.map((option, i) => (
         <option key={i} value={option.value}>
           {option.name}

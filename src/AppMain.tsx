@@ -13,10 +13,13 @@ type props = {
 };
 
 function AppMain(props: props) {
+  const className = classnames(
+    "flex w-full max-w-360 mx-auto",
+    props.className
+  );
+
   return (
-    <main
-      className={classnames("flex w-full max-w-360 mx-auto", props.className)}
-    >
+    <main className={className}>
       <AppFilters
         className="hidden lg:block w-52 py-6 pl-8"
         statuses={props.statuses}

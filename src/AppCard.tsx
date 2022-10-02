@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import formatDistance from "date-fns/formatDistance";
+import { getTimeAgo } from "../src/utils/general.utils";
 
 export type card = {
   id: number;
@@ -18,10 +18,6 @@ type props = {
 };
 
 function AppMainCard(props: props) {
-  function getTimeAgo(date: string) {
-    return formatDistance(new Date(date), new Date(), { addSuffix: true });
-  }
-
   function getStatusText(card: card) {
     if (card.status === "transcribing") {
       return "Transcribing";
@@ -32,13 +28,13 @@ function AppMainCard(props: props) {
     return `Edited ${getTimeAgo(card.updatedAt)}`;
   }
 
+  const className = classnames(
+    "w-full overflow-hidden flex flex-col rounded shadow",
+    props.className
+  );
+
   return (
-    <div
-      className={classnames(
-        "AppMainCard w-full overflow-hidden flex flex-col rounded shadow",
-        props.className
-      )}
-    >
+    <div className={className}>
       <div
         className={classnames(
           "cover overflow-hidden flex-1 aspect-video relative bg-gray-200",

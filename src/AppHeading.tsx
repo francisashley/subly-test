@@ -18,11 +18,10 @@ const headingClasses = {
 
 function AppHeading(props: props) {
   const HeadingTag = `h${props.level}` as keyof JSX.IntrinsicElements;
+  const className = classnames(headingClasses[props.level], props.className);
 
   return (
-    <HeadingTag
-      className={classnames(headingClasses[props.level], props.className)}
-    >
+    <HeadingTag className={className}>
       {props.text || props.children}
     </HeadingTag>
   );

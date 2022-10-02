@@ -19,16 +19,13 @@ function AppSearch(props: props) {
     props.onSearch(query);
   }
 
+  const className = classnames(
+    "flex relative w-full sm:w-fit",
+    props.className
+  );
+
   return (
-    <form
-      className={classnames(
-        "AppSearch flex relative w-full sm:w-fit",
-        props.className
-      )}
-      action=""
-      method="get"
-      onSubmit={onSubmit}
-    >
+    <form className={className} action="" method="get" onSubmit={onSubmit}>
       <FiSearch className="absolute top-1/2 transform -translate-y-1/2 left-3" />
       <input
         className={classnames(
