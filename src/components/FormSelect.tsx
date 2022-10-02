@@ -8,7 +8,7 @@ type option = {
 
 type props = {
   className?: string;
-  id?: string;
+  id: string;
   options: option[];
   onInput: (type: string) => void;
 };
