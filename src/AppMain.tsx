@@ -9,7 +9,7 @@ type props = {
   cards: card[];
   statuses: filter[];
   languages: filter[];
-  onFilter: () => void;
+  onFilter: (group: string, id: string, checked: boolean) => void;
 };
 
 function AppMain(props: props) {

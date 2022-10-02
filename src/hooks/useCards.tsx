@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { card } from "../AppCard";
 import {
   filterBySearchQuery,
@@ -8,38 +8,68 @@ import {
   sortByUpdated,
 } from "../utils/data.utils";
 
-export function useCards(initialCards: card[]) {
+export function useCards(defaultCards: card[]) {
+  const [initialCards] = useState(sortByName(defaultCards));
   const [cards, setCards] = useState(sortByName(initialCards));
-  const [filteredCards, setFilteredCards] = useState(sortByName(cards));
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filters, setFilters] = useState(new Map());
+  const [sort, setSort] = useState("");
 
-  const statuses = getStatusFilters(cards);
-  const languages = getLanguageFilters(cards);
+  const statuses = getStatusFilters(initialCards);
+  const languages = getLanguageFilters(initialCards);
 
-  const setSearchQuery = (searchQuery: string) => {
-    setCards(
-      searchQuery ? filterBySearchQuery(cards, searchQuery) : initialCards
-    );
-  };
+  useEffect(() => {
+    // filter searchQuery
+    let parsedCards: card[] = searchQuery
+      ? filterBySearchQuery([...initialCards], searchQuery)
+      : [...initialCards];
 
-  const setFilter = () => alert("filtering");
-
-  const setSort = (type: string) => {
-    if (type === "name") {
-      setCards(sortByName(cards));
-    } else if (type === "updated") {
-      setCards(sortByUpdated(cards));
+    // Filter status
+    if (filters.get("status")?.length) {
+      const statuses = new Set(filters.get("status"));
+      parsedCards = parsedCards.filter((parsedCard) => {
+        return statuses.has(parsedCard.status);
+      });
     }
+
+    // Filter language
+    if (filters.get("language")?.length) {
+      const languages = new Set(filters.get("language"));
+      parsedCards = parsedCards.filter((parsedCard) => {
+        return parsedCard.languages.some((language) => languages.has(language));
+      });
+    }
+
+    // handle sort
+    if (sort === "name") {
+      parsedCards = sortByName(cards);
+    } else if (sort === "updated") {
+      parsedCards = sortByUpdated(cards);
+    }
+
+    setCards(parsedCards);
+  }, [searchQuery, filters, sort]);
+
+  const handleSetFilter = (group: string, filter: string, checked: boolean) => {
+    let _filters: string[] = filters.get(group) ?? [];
+
+    if (checked) {
+      _filters = [..._filters, filter];
+    } else {
+      _filters = _filters.filter((_filter) => _filter !== filter);
+    }
+
+    filters.set(group, _filters);
+    setFilters(new Map(filters));
   };
 
   return {
     cards,
     setCards,
-    filteredCards,
-    setFilteredCards,
     statuses,
     languages,
     setSearchQuery,
-    setFilter,
+    setFilter: handleSetFilter,
     setSort,
   };
 }

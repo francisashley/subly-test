@@ -9,10 +9,18 @@ type props = {
   className?: string;
   statuses: filter[];
   languages: filter[];
-  onFilter: () => void;
+  onFilter: (group: string, id: string, checked: boolean) => void;
 };
 
 function AppFilters(props: props) {
+  function onFilter(
+    group: string,
+    id: string,
+    event: React.FormEvent<HTMLInputElement>
+  ) {
+    props.onFilter(group, id, event.currentTarget.checked);
+  }
+
   return (
     <aside className={props.className}>
       <AppHeading level={2} text="Filters" className="mb-4" />
@@ -20,7 +28,11 @@ function AppFilters(props: props) {
       <ul className="mb-4">
         {props.statuses.map((status) => (
           <li key={status.id}>
-            <input type="checkbox" id={status.id} onClick={props.onFilter} />{" "}
+            <input
+              type="checkbox"
+              id={status.id}
+              onClick={(event) => onFilter("status", status.id, event)}
+            />{" "}
             <label htmlFor={status.id}>{status.label}</label>
           </li>
         ))}
@@ -29,7 +41,11 @@ function AppFilters(props: props) {
       <ul>
         {props.languages.map((language) => (
           <li key={language.id}>
-            <input type="checkbox" id={language.id} onClick={props.onFilter} />{" "}
+            <input
+              type="checkbox"
+              id={language.id}
+              onClick={(event) => onFilter("language", language.id, event)}
+            />{" "}
             <label htmlFor={language.id}>{language.label}</label>
           </li>
         ))}

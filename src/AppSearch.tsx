@@ -12,6 +12,7 @@ function AppSearch(props: props) {
 
   function onInput(event: React.FormEvent<HTMLInputElement>) {
     setQuery(event.currentTarget.value);
+    props.onSearch(event.currentTarget.value);
   }
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
