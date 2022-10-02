@@ -32,8 +32,7 @@ function AppSearch(props: props) {
       <FiSearch className="absolute top-1/2 transform -translate-y-1/2 left-3" />
       <input
         className={classnames(
-          "border flex-1 p-2 bl-rounded rounded-lg bg-gray-200 w-full sm:w-64 sm:focus:w-96 transition-width duration-300 ease-in-out pl-9",
-          { "lg:w-96": Boolean(query.length) }
+          "border flex-1 p-2 bl-rounded rounded-lg bg-gray-200 w-full sm:w-128 pl-9"
         )}
         type="text"
         placeholder="Search"
