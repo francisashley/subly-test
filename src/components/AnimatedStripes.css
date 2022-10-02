@@ -1,0 +1,40 @@
+.animated-stripes {
+  position: absolute;
+  left: -46px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+
+  background: repeating-linear-gradient(
+    -55deg,
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 2px,
+    transparent 11px,
+    rgba(0, 0, 0, 0.1) 12px,
+    rgba(0, 0, 0, 0.1) 20px
+  );
+
+  animation-name: moving-stripes;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes moving-stripes {
+  from {
+    -webkit-transform: translateX(0);
+  }
+  to {
+    -webkit-transform: translateX(46px);
+  }
+}
+
+@keyframes moving-stripes {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(46px);
+  }
+}

@@ -9,6 +9,18 @@ function App() {
   const { filteredCards, statuses, languages, search, setFilter, setSort } =
     useCards(data.media as card[]);
 
+  function onClickReportCard() {
+    alert("This feature is unavailable right now.");
+  }
+
+  function onClickDeleteCard() {
+    alert("This feature is unavailable right now.");
+  }
+
+  function onClickEditCard() {
+    alert("This feature is unavailable right now.");
+  }
+
   return (
     <div className="flex flex-col min-h-screen">
       <AppHeader
@@ -23,9 +35,12 @@ function App() {
       <AppMain
         className="w-full max-w-360 mx-auto"
         cards={filteredCards}
-        onFilter={setFilter}
         statuses={statuses}
         languages={languages}
+        onFilter={setFilter}
+        onClickReportCard={onClickReportCard}
+        onClickDeleteCard={onClickDeleteCard}
+        onClickEditCard={onClickEditCard}
       />
     </div>
   );

@@ -11,6 +11,9 @@ type props = {
   statuses: filter[];
   languages: filter[];
   onFilter: (group: string, id: string, checked: boolean) => void;
+  onClickEditCard?: (id: number) => void;
+  onClickDeleteCard?: (id: number) => void;
+  onClickReportCard?: (id: number) => void;
 };
 
 function AppMain(props: props) {
@@ -24,7 +27,13 @@ function AppMain(props: props) {
         languages={props.languages}
         onFilter={props.onFilter}
       />
-      <AppMainBody className="w-full" cards={props.cards} />
+      <AppMainBody
+        className="w-full"
+        cards={props.cards}
+        onClickReportCard={props.onClickReportCard}
+        onClickDeleteCard={props.onClickDeleteCard}
+        onClickEditCard={props.onClickEditCard}
+      />
     </main>
   );
 }
