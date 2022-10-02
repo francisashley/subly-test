@@ -10,45 +10,20 @@ import {
 
 export function useCards(defaultCards: card[]) {
   const [initialCards] = useState(sortByName(defaultCards));
-  const [cards, setCards] = useState(sortByName(initialCards));
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchedCards, setSearchedCards] = useState(defaultCards);
+  const [cards, setCards] = useState(sortByName(searchedCards));
   const [filters, setFilters] = useState(new Map());
   const [sort, setSort] = useState("");
 
   const statuses = getStatusFilters(initialCards);
   const languages = getLanguageFilters(initialCards);
 
-  useEffect(() => {
-    // filter searchQuery
-    let parsedCards: card[] = searchQuery
+  function search(searchQuery: string) {
+    const _searchedCards = searchQuery
       ? filterBySearchQuery([...initialCards], searchQuery)
       : [...initialCards];
-
-    // Filter status
-    if (filters.get("status")?.length) {
-      const statuses = new Set(filters.get("status"));
-      parsedCards = parsedCards.filter((parsedCard) => {
-        return statuses.has(parsedCard.status);
-      });
-    }
-
-    // Filter language
-    if (filters.get("language")?.length) {
-      const languages = new Set(filters.get("language"));
-      parsedCards = parsedCards.filter((parsedCard) => {
-        return parsedCard.languages.some((language) => languages.has(language));
-      });
-    }
-
-    // handle sort
-    if (sort === "name") {
-      parsedCards = sortByName(cards);
-    } else if (sort === "updated") {
-      parsedCards = sortByUpdated(cards);
-    }
-
-    setCards(parsedCards);
-  }, [searchQuery, filters, sort]);
+    setSearchedCards(_searchedCards);
+  }
 
   const handleSetFilter = (group: string, filter: string, checked: boolean) => {
     let _filters: string[] = filters.get(group) ?? [];
@@ -63,12 +38,38 @@ export function useCards(defaultCards: card[]) {
     setFilters(new Map(filters));
   };
 
+  useEffect(() => {
+    let _cards: card[] = searchedCards;
+    // Filter status
+    if (filters.get("status")?.length) {
+      const statuses = new Set(filters.get("status"));
+      _cards = _cards.filter((_card) => statuses.has(_card.status));
+    }
+
+    // Filter language
+    if (filters.get("language")?.length) {
+      const languages = new Set(filters.get("language"));
+      _cards = _cards.filter((_card) => {
+        return _card.languages.some((language) => languages.has(language));
+      });
+    }
+
+    // handle sort
+    if (sort === "name") {
+      _cards = sortByName(cards);
+    } else if (sort === "updated") {
+      _cards = sortByUpdated(cards);
+    }
+
+    setCards(_cards);
+  }, [searchedCards, filters, sort]);
+
   return {
     cards,
     setCards,
     statuses,
     languages,
-    setSearchQuery,
+    search,
     setFilter: handleSetFilter,
     setSort,
   };

@@ -6,14 +6,15 @@ import data from "./data.json";
 import { useCards } from "./hooks/useCards";
 
 function App() {
-  const { cards, statuses, languages, setSearchQuery, setFilter, setSort } =
-    useCards(data.media as card[]);
+  const { cards, statuses, languages, search, setFilter, setSort } = useCards(
+    data.media as card[]
+  );
 
   return (
     <div className="flex flex-col min-h-screen">
       <AppMainHeader
         className="border-b flex py-4 px-8 items-center"
-        onSearch={setSearchQuery}
+        onSearch={search}
       />
       <AppSearchResultsBar
         className="border-b flex py-2 px-8 items-center"
