@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import React, { useState } from "react";
+import React from "react";
 import { FiSearch } from "react-icons/fi";
 
 type props = {
@@ -8,16 +8,12 @@ type props = {
 };
 
 function AppSearch(props: props) {
-  const [query, setQuery] = useState("");
-
   function onInput(event: React.FormEvent<HTMLInputElement>) {
-    setQuery(event.currentTarget.value);
     props.onSearch(event.currentTarget.value);
   }
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    props.onSearch(query);
   }
 
   const className = classnames(
