@@ -36,7 +36,7 @@ export function useCards(defaultCards: card[]) {
     setLanguages(getLanguageFilters(searchedCards));
   }, [searchedCards]);
 
-  // Filter the search results by the search query when the search query changes
+  // Filter the search results when the search query changes
   useEffect(() => {
     const _searchedCards = searchQuery
       ? filterBySearchQuery([...allCards], searchQuery)
@@ -44,10 +44,11 @@ export function useCards(defaultCards: card[]) {
     setSearchedCards(_searchedCards);
   }, [searchQuery, allCards]);
 
-  // Filter the search results when the checked filters change
+  // Filter the search results when the filter checkboxes change
   useEffect(() => {
     let _filteredCards: card[] = searchedCards;
-    // Filter status
+
+    // Filter by status
     if (filters.get("status")?.length) {
       const statuses = new Set(filters.get("status"));
       _filteredCards = _filteredCards.filter((_card) =>
@@ -55,7 +56,7 @@ export function useCards(defaultCards: card[]) {
       );
     }
 
-    // Filter language
+    // Filter by language
     if (filters.get("language")?.length) {
       const languages = new Set(filters.get("language"));
       _filteredCards = _filteredCards.filter((_card) => {
@@ -63,7 +64,7 @@ export function useCards(defaultCards: card[]) {
       });
     }
 
-    // handle sort
+    // Sort the results
     if (sort === "name") {
       _filteredCards = sortByName(_filteredCards);
     } else if (sort === "updated") {
@@ -73,7 +74,7 @@ export function useCards(defaultCards: card[]) {
     setFilteredCards(_filteredCards);
   }, [searchedCards, filters, sort]);
 
-  // The filters need some extra logic to toggle "on" or "off"
+  // Handle toggling the filter checkboxes
   const handleSetFilter = (group: string, filter: string, checked: boolean) => {
     let _filters: string[] = filters.get(group) ?? [];
 
@@ -87,7 +88,7 @@ export function useCards(defaultCards: card[]) {
     setFilters(new Map(filters));
   };
 
-  // Delete a card
+  // Delete the card
   function deleteCard(id: number) {
     setAllCards(allCards.filter((card) => card.id !== id));
   }
