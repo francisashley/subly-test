@@ -28,7 +28,11 @@ const statusNames = {
 } as { [key: string]: string };
 
 export function getStatusFilters(cards: card[]): filter[] {
-  const statuses: { [key: string]: number } = {};
+  const statuses: { [key: string]: number } = {
+    ready: 0,
+    transcribing: 0,
+    error: 0,
+  };
   cards.forEach((card) => {
     statuses[card.status] = (statuses[card.status] || 0) + 1;
   });
