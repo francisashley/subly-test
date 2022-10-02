@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { card } from "../AppCard";
+import { card } from "../components/AppCard";
 import {
   filterBySearchQuery,
   getLanguageFilters,

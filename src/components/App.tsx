@@ -2,8 +2,8 @@ import AppMainHeader from "./AppMainHeader";
 import AppSearchResultsBar from "./AppSearchResultsBar";
 import AppMain from "./AppMain";
 import { card } from "./AppCard";
-import data from "./data.json";
-import { useCards } from "./hooks/useCards";
+import data from "../data/data.json";
+import { useCards } from "../hooks/useCards";
 
 function App() {
   const { filteredCards, statuses, languages, search, setFilter, setSort } =

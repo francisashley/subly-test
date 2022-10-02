@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import { getTimeAgo } from "../src/utils/general.utils";
+import { getTimeAgo } from "../utils/general.utils";
 
 export type card = {
   id: number;
