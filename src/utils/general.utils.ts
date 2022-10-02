@@ -1,7 +1,7 @@
-import formatDistance from "date-fns/formatDistance";
+import formatDistanceStrict from "date-fns/formatDistanceStrict";
 
 export function getTimeAgo(date: string) {
-  return formatDistance(new Date(date), new Date(), { addSuffix: true });
+  return formatDistanceStrict(new Date(date), new Date(), { addSuffix: true });
 }
 
 export default {
