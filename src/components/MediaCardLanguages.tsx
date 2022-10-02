@@ -8,7 +8,7 @@ type props = {
 
 function MediaCardLanguages(props: props) {
   const className = classnames(
-    "flex bg-white rounded-sm text-xs items-center",
+    "flex bg-white rounded-sm text-xs items-center overflow-hidden",
     props.className
   );
 
