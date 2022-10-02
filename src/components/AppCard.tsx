@@ -17,7 +17,7 @@ type props = {
   card: card;
 };
 
-function AppMainCard(props: props) {
+function AppCard(props: props) {
   function getStatusText(card: card) {
     if (card.status === "transcribing") {
       return "Transcribing";
@@ -89,4 +89,4 @@ function AppMainCard(props: props) {
   );
 }
 
-export default AppMainCard;
+export default AppCard;
