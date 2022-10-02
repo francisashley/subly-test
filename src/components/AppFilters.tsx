@@ -1,4 +1,5 @@
 import AppHeading from "./AppHeading";
+import FormCheckbox from "./FormCheckbox";
 
 export type filter = {
   id: string;
@@ -14,14 +15,6 @@ type props = {
 };
 
 function AppFilters(props: props) {
-  function onFilter(
-    group: string,
-    id: string,
-    event: React.FormEvent<HTMLInputElement>
-  ) {
-    props.onFilter(group, id, event.currentTarget.checked);
-  }
-
   return (
     <aside className={props.className}>
       <AppHeading level={2} text="Filters" className="mb-4" />
@@ -29,14 +22,13 @@ function AppFilters(props: props) {
       <ul className="mb-4">
         {props.statuses.map((status) => (
           <li key={status.id}>
-            <input
-              type="checkbox"
+            <FormCheckbox
               id={status.id}
-              onClick={(event) => onFilter("status", status.id, event)}
-            />{" "}
-            <label className="select-none" htmlFor={status.id}>
-              {status.label} ({status.amount})
-            </label>
+              label={`${status.label} (${status.amount})`}
+              onInput={(checked) =>
+                props.onFilter("status", status.id, checked)
+              }
+            />
           </li>
         ))}
       </ul>
@@ -44,14 +36,13 @@ function AppFilters(props: props) {
       <ul>
         {props.languages.map((language) => (
           <li key={language.id}>
-            <input
-              type="checkbox"
+            <FormCheckbox
               id={language.id}
-              onClick={(event) => onFilter("language", language.id, event)}
-            />{" "}
-            <label className="select-none" htmlFor={language.id}>
-              {language.label} ({language.amount})
-            </label>
+              label={`${language.label} (${language.amount})`}
+              onInput={(checked) =>
+                props.onFilter("language", language.id, checked)
+              }
+            />
           </li>
         ))}
       </ul>
