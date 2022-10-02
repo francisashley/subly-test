@@ -1,4 +1,4 @@
-import AppMainHeader from "./AppMainHeader";
+import AppHeader from "./AppHeader";
 import AppSearchResultsBar from "./AppSearchResultsBar";
 import AppMain from "./AppMain";
 import { card } from "./AppCard";
@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <AppMainHeader
+      <AppHeader
         className="border-b flex py-4 px-8 items-center"
         onSearch={search}
       />

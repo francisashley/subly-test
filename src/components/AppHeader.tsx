@@ -6,7 +6,7 @@ type props = {
   onSearch: (query: string) => void;
 };
 
-function AppMainHeader(props: props) {
+function AppHeader(props: props) {
   const className = classnames("flex justify-center", props.className);
 
   return (
@@ -16,4 +16,4 @@ function AppMainHeader(props: props) {
   );
 }
 
-export default AppMainHeader;
+export default AppHeader;
