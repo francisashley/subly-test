@@ -6,26 +6,36 @@ import AppMain from "./AppMain";
 import AppSearchResultsBar from "./AppSearchResultsBar";
 
 function App() {
-  const { filteredCards, statuses, languages, search, setFilter, setSort } =
-    useCards(data.media as card[]);
+  const {
+    filteredCards,
+    statuses,
+    languages,
+    setSearchQuery,
+    setFilter,
+    setSort,
+    deleteCard,
+  } = useCards(data.media as card[]);
 
   function onClickReportCard() {
-    alert("This feature is unavailable right now.");
+    alert("This feature is not supported right now.");
   }
 
-  function onClickDeleteCard() {
-    alert("This feature is unavailable right now.");
+  function onClickDeleteCard(id: number) {
+    const confirmed = confirm("Are you sure?");
+    if (confirmed) {
+      deleteCard(id);
+    }
   }
 
   function onClickEditCard() {
-    alert("This feature is unavailable right now.");
+    alert("This feature is not supported right now.");
   }
 
   return (
     <div className="flex flex-col min-h-screen">
       <AppHeader
         className="border-b flex py-4 px-8 items-center"
-        onSearch={search}
+        onSearch={setSearchQuery}
       />
       <AppSearchResultsBar
         className="border-b flex py-2 px-8 items-center"
