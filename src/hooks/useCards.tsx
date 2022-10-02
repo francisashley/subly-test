@@ -13,7 +13,7 @@ export function useCards(defaultCards: card[]) {
   const [searchedCards, setSearchedCards] = useState(defaultCards);
   const [filteredCards, setFilteredCards] = useState(sortByName(searchedCards));
   const [filters, setFilters] = useState(new Map());
-  const [sort, setSort] = useState("");
+  const [sort, setSort] = useState("name");
   const [statuses, setStatuses] = useState(getStatusFilters(initialCards));
   const [languages, setLanguages] = useState(getLanguageFilters(initialCards));
 
