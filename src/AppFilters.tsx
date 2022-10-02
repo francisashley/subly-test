@@ -34,7 +34,7 @@ function AppFilters(props: props) {
               id={status.id}
               onClick={(event) => onFilter("status", status.id, event)}
             />{" "}
-            <label htmlFor={status.id}>
+            <label className="select-none" htmlFor={status.id}>
               {status.label} ({status.amount})
             </label>
           </li>
@@ -49,7 +49,7 @@ function AppFilters(props: props) {
               id={language.id}
               onClick={(event) => onFilter("language", language.id, event)}
             />{" "}
-            <label htmlFor={language.id}>
+            <label className="select-none" htmlFor={language.id}>
               {language.label} ({language.amount})
             </label>
           </li>

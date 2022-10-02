@@ -24,7 +24,7 @@ function AppSearchResultsBar(props: props) {
         1-{props.totalResults} of {props.totalResults}
       </div>
       <div className="flex items-center">
-        <label className="text-md font-medium" htmlFor="sort-cards">
+        <label className="text-md font-medium select-none" htmlFor="sort-cards">
           Sort by
         </label>
         <FormSelect
