@@ -24,12 +24,12 @@ type props = {
 
 function AppCard(props: props) {
   const className = classnames(
-    "w-full overflow-hidden flex flex-col rounded shadow group cursor-default",
+    "w-full overflow-hidden flex flex-col rounded shadow group cursor-default hover:shadow-lg duration-1000 ease-out-expo",
     props.className
   );
 
   return (
-    <a href="#" className={className}>
+    <div className={className}>
       <AppCardCover
         card={props.card}
         onClickReport={props.onClickReport}
@@ -37,7 +37,7 @@ function AppCard(props: props) {
         onClickEdit={props.onClickEdit}
       />
       <AppCardContent card={props.card} />
-    </a>
+    </div>
   );
 }
 

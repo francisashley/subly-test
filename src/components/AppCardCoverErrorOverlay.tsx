@@ -11,21 +11,18 @@ type props = {
 };
 
 function AppCardCoverErrorOverlay(props: props) {
-  const className = classnames(
-    "flex py-8 pl-2 pr-4 items-center",
-    props.className
-  );
+  const className = classnames("flex py-8 px-4 items-center", props.className);
   return (
     <div className={className}>
       <div className="flex flex-col">
-        <div className="flex">
-          <FiAlertCircle className="w-16 text-red-500 mt-1 mr-2" />
-          <p className="font-medium text-black/[0.7] mb-4 text-[0.66rem]">
+        <div className="flex relative">
+          <FiAlertCircle className="text-red-500 absolute top-1 -left-1 w-[18px] h-[18px]" />
+          <p className="font-medium text-black/[0.7] mb-2 lg:mb-4 text-[0.71rem]  pl-6">
             An error occurred while processing your file. Delete your file to
             try again, and report issue if the problem persists.
           </p>
         </div>
-        <div className="flex nowrap">
+        <div className="flex whitespace-nowrap">
           <button
             className="border border-gray-400 text-xs ml-auto rounded bg-white text-black rounded py-1.5 font-medium px-2 hover:text-white hover:bg-red-500 hover:border-red-500 duration-300 ease-out-expo"
             onClick={() => props.onClickDelete?.(props.card.id)}
