@@ -4,6 +4,7 @@ import { card } from "./MediaCard";
 import MediaCardCoverErrorOverlay from "./MediaCardCoverErrorOverlay";
 import MediaCardCoverReadyOverlay from "./MediaCardCoverReadyOverlay";
 import MediaCardCoverTranscribingOverlay from "./MediaCardCoverTranscribingOverlay";
+import MediaCardLanguages from "./MediaCardLanguages";
 
 type props = {
   className?: string;
@@ -20,20 +21,31 @@ function MediaCardCover(props: props) {
   );
   const showImage = props.card.status !== "error";
   const zoomOnHover = props.card.status === "ready";
+  const showLanguages =
+    props.card.status === "ready" && props.card.languages.length > 1;
   return (
     <div className={className}>
       {showImage && (
         <img
-          className={classnames("image absolute w-full h-full object-cover", {
-            "scale-100 group-hover:scale-110 duration-1000 ease-out-expo":
-              zoomOnHover,
-          })}
+          className={classnames(
+            "image absolute w-full h-full object-cover z-0",
+            {
+              "scale-100 group-hover:scale-110 duration-1000 ease-out-expo":
+                zoomOnHover,
+            }
+          )}
           src={props.card.cover}
+        />
+      )}
+      {showLanguages && (
+        <MediaCardLanguages
+          className="absolute top-2 left-2 z-10"
+          amount={props.card.languages.length}
         />
       )}
       {props.card.status === "ready" && (
         <MediaCardCoverReadyOverlay
-          className="absolute w-full h-full"
+          className="absolute w-full h-full z-20"
           card={props.card}
           onClickEdit={props.onClickEdit}
           onClickDelete={props.onClickDelete}
@@ -41,13 +53,13 @@ function MediaCardCover(props: props) {
       )}
       {props.card.status === "transcribing" && (
         <MediaCardCoverTranscribingOverlay
-          className="absolute w-full h-full"
+          className="absolute w-full h-full z-20"
           card={props.card}
         />
       )}
       {props.card.status === "error" && (
         <MediaCardCoverErrorOverlay
-          className="absolute w-full h-full"
+          className="absolute w-full h-full z-20"
           card={props.card}
           onClickReport={props.onClickReport}
           onClickDelete={props.onClickDelete}
