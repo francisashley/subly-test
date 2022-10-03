@@ -1,65 +1,26 @@
-# Subly test
+# Subly test solution
 
-## Goals
+Welcome to my solution for the Subly test. The solution can be viewed online [here](https://francisashley.github.io/subly-test/) or alternative run locally following the steps outlined further down. Had some fun with this and scope extended beyond the spec a little. Features include search, pagination indicator, sorting, status and language filters, responsive design, tests, API usage, card deletion and all the different card states.
 
-- Fetch data from endpoint (https://run.mocky.io/v3/a811c0e9-adae-4554-9694-173aa23bc38b).
-- Recreate the cards in the test using React and TypeScript
-  - Think about architecture
-    - Make easy to reuse
-    - Make east to understand
-  - Elements of the card
-    - Cover image
-    - Title
-    - Status
-    - Last edited
-  - The card can handle lots of different states
-    - "Ready"
-      - Show how many languages the medium has
-      - On hover, show edit button on top of the cover image
-    - "Error"
-      - Show an error instead of the cover image
-    - "Transcribing"
-      - Show a loading bar on top of the cover image
-- Accessible
-  - Keyboard
-  - Text to speech
-- UX
-- Bonus points
-  - Add some search filters
-    - By status
-    - By language
-  - Test components
-  - Deploy creation and send link
+## Tech used
 
-## Tech stack
+- Languages: `TypeScript`, `React`
+- API: `Fetch`
+- Styling: `TailwindCSS`, `CSS`
+- Testing: `Jest`, `testing-utils/react`
+- Productivity/QA: `VSCode`, `Eslint`, `Stylelint`, `Prettier`
 
-- Core framework / language
-  - React
-  - TypeScript
-- Querying API
-  - Native fetch
-- Date handling
-  - date-fns
-- Styling
-  - TailwindCSS
-  - SCSS ??
-- Animations
-  - native CSS ??
-  - React Spring ??
-  - React Framer ?? 
-- Testing
-  - Jest
-  - React testing Library
-- Deploy
-  - Github Pages
-- Dev QA
-  - Prettier
-  - Eslint
+## Install locally
 
-## Roadmap
-
-- [x] Init
-- [x] Install / setup tech stack
-- [ ] Create skeleton (no styling) // TDD ??
-- [ ] Style everything
-- [ ] Deploy
+1. Clone the solution
+```
+git clone https://github.com/francisashley/subly-test.git .
+```
+2. Install the packages
+```
+yarn
+```
+3. Run the server
+```
+yarn start
+```
