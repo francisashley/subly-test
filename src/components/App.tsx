@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 
+import cardFixtures from "../fixtures/cards.json";
 import { useCards } from "../hooks/useCards";
 import AppHeader from "./AppHeader";
 import AppMain from "./AppMain";
@@ -24,7 +25,11 @@ function App() {
       .then((response) => {
         setAllCards(response.media as card[]);
       })
-      .catch(console.error);
+      .catch((error) => {
+        console.error(error);
+        // the error probably means the endpoint has been discontinued, so we'll fallback to a local fixture
+        setAllCards(cardFixtures.media as card[]);
+      });
   }, []);
 
   function onClickReportCard() {
