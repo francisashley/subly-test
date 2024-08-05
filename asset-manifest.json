@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/subly-test/static/css/main.97722cb2.css",
-    "main.js": "/subly-test/static/js/main.dcacaf97.js",
+    "main.js": "/subly-test/static/js/main.8cd6a490.js",
     "static/js/787.4494fbf0.chunk.js": "/subly-test/static/js/787.4494fbf0.chunk.js",
     "index.html": "/subly-test/index.html",
     "main.97722cb2.css.map": "/subly-test/static/css/main.97722cb2.css.map",
-    "main.dcacaf97.js.map": "/subly-test/static/js/main.dcacaf97.js.map",
+    "main.8cd6a490.js.map": "/subly-test/static/js/main.8cd6a490.js.map",
     "787.4494fbf0.chunk.js.map": "/subly-test/static/js/787.4494fbf0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.97722cb2.css",
-    "static/js/main.dcacaf97.js"
+    "static/js/main.8cd6a490.js"
   ]
 }
